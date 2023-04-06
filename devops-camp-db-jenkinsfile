@@ -63,14 +63,14 @@ pipeline {
               }
 
               // Added scan Lab-7
-                stage('Security scanning') {
+        stage('Security scanning') {
             steps {
                   withCredentials([usernamePassword(credentialsId: 'snash-harbor-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                       echo "Scanning $DB_IMAGE_NAME image"
                       sh 'python harbor_scanner.py -i $DB_IMAGE_NAME -r $HARBOR_REGISTRY -p $HARBOR_PROJECT -c ${USERNAME}:${PASSWORD}'
-                        }
-                    }
-                }
+                  }
+            }
+        }
               stage('Deploy') {
                   steps {
                       echo "Deployment stage"

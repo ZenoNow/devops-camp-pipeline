@@ -55,7 +55,7 @@ pipeline {
         }
        
         //TODO("Lab 7 - Automated Security Scans"): add a stage
-        stage('Security scanning') {
+      stage('Security scanning') {
             steps {
                   withCredentials([usernamePassword(credentialsId: 'snash-harbor-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                       echo "Scanning $APP_IMAGE_NAME image"
